@@ -1,0 +1,21 @@
+// Prisma sxemasi: bazadagi jadvallar shu yerda tasvirlanadi
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Post jadvali — har bir qator bitta maqola
+model Post {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  author    String?
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
